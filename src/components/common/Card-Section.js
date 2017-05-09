@@ -23,4 +23,4 @@ const CardSectionStyle = {
 };
 
 
-export default CardSection;
+export {CardSection};

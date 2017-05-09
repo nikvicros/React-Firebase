@@ -35,4 +35,4 @@ const PrimaryButtonStyle = {
     }
 };
 
-export default PrimaryButtonStyle;
+export { PrimaryButtonStyle };
