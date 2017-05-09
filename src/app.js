@@ -1,7 +1,6 @@
 import React, {Component}from 'react';
 import { View, Text } from 'react-native';
 
-
 //Custom Styles
 import { Header } from './components/common';
 
