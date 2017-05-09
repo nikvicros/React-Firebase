@@ -1,0 +1,3 @@
+rootProject.name = 'Authfirebase'
+
+include ':app'
