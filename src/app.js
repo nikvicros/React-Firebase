@@ -1,6 +1,7 @@
 import React, {Component}from 'react';
 import { View, Text } from 'react-native';
 import firebase from 'firebase';
+import LoginForm from './compoents/LoginForm'
 
 //Custom Styles
 import { Header } from './components/common';
@@ -19,12 +20,12 @@ class App extends Component {
         });
     }
 
-    
+
     render() {
         return (
             <View>
                 <Header headerText="Please Login"/>
-                <Text>App</Text>
+                <LoginForm />
             </View>
         );
     }
