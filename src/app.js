@@ -8,5 +8,7 @@ class App extends Component {
                 <Text>Root Application</Text>
             </View>
         );
-    };
-};
+    }
+}
+
+export default App;
