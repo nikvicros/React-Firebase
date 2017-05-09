@@ -1,4 +1,4 @@
 export * from './Button';
-export * from './AppHeader';
+export * from './Header';
 export * from './Card-Section';
 export * from './Card-Style';

@@ -32,4 +32,4 @@ const HeaderStyles = {
     }
 }
 
-export { AppHeader };
+export { Header };
