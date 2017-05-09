@@ -3,15 +3,14 @@ import { View, Text } from 'react-native';
 
 
 //Custom Styles
-import { AppHeader } from './components/common';
+import { Header } from './components/common';
 
 class App extends Component {
     render() {
         return (
             <View>
-            <AppHeader>
-                <Text>Authenticate</Text>
-                </AppHeader>
+                <Header headerText="Please Login" />
+                <Text>App</Text>
             </View>
         );
     }
