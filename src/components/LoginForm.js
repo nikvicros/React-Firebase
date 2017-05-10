@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 
 
 //Import Styles
+
 import {Card, Button, CardSection, TextField } from './common';
 
 class LoginForm extends Component {
@@ -12,14 +13,16 @@ class LoginForm extends Component {
 
     onButtonPress() {
         const { email, password } = this.state;
+        
+        this.setState({ error: ' '});
+
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .catch(() =>{
+        .catch(() => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .catch(() => {
-                this.setState({error: 'Authentication Failed.'});
-
-            })
-        })
+                this.setState({error: 'Authentication Failed'});
+            });
+        });
     }
 
     render() {
@@ -30,7 +33,7 @@ class LoginForm extends Component {
                     label='Email'
                     placeholder='your@email.com'
                     val={ this.state.email }
-                    onChange={ email => this.setState({ email })}  
+                    onChangeText={ email => this.setState({ email })}  
                     /> 
                 </CardSection>
 
@@ -40,7 +43,7 @@ class LoginForm extends Component {
                     label='Password'
                     placeholder='Password'
                     val={ this.state.password }
-                    onChange={ password => this.setState({ password })}                    
+                    onChangeText={ password => this.setState({ password })}                    
                     />
                 </CardSection>
 
@@ -65,6 +68,5 @@ const styles = {
         color: 'red'
     }
 }
-
 
 export default LoginForm;
