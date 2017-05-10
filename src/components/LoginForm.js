@@ -15,7 +15,8 @@ class LoginForm extends Component {
                     <TextInput
                     val={ this.state.text }
                     onChange={text => this.setState({ text: text })} 
-                    style={{ height: 20, width: 100 }} /> 
+                    style={{ height: 20, width: 100 }} 
+                    /> 
                 </CardSection>
                 <CardSection>
                 </CardSection>
