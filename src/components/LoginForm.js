@@ -9,12 +9,12 @@ import {Card, Button, CardSection, TextField } from './common';
 
 class LoginForm extends Component {
     
-    state = { email: '', password: '', error: '' };
+    state = { email: '', password: '', error: '', loading: false };
 
     onButtonPress() {
         const { email, password } = this.state;
         
-        this.setState({ error: ' '});
+        this.setState({ error: ' ', loading: true });
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(() => {
@@ -23,6 +23,19 @@ class LoginForm extends Component {
                 this.setState({error: 'Authentication Failed'});
             });
         });
+    }
+
+    renderButton() {
+        if (this.state.loading) {
+            return <Spinner size='small' />
+        }
+
+        return (
+            <Button onPress={this.onButtonPress.bind(this)}>
+                Login
+            </Button>
+
+        )
     }
 
     render() {
@@ -52,9 +65,7 @@ class LoginForm extends Component {
                 </Text>
 
                 <CardSection>
-                    <Button onPress={this.onButtonPress.bind(this)}>
-                        Login
-                    </Button>
+                    {this.renderButton()}   
                 </CardSection>
             </Card>
         );
