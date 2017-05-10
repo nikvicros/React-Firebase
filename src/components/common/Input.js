@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, View, Text } from 'react-native';
 
-const Input = ({ label, value, onChangeText }) => {
+const TextField = ({ label, value, onChangeText }) => {
     return(
         <View>
             <Text>
@@ -19,4 +19,4 @@ const styles = {
 
 }
 
-export { Input };
+export { TextField };

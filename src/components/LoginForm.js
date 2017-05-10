@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 //Import Styles
-import {Card, Button, CardSection, Input } from './common';
+import {Card, Button, CardSection, TextField } from './common';
 
 class LoginForm extends Component {
     
@@ -12,7 +12,7 @@ class LoginForm extends Component {
         return (
             <Card>
                 <CardSection>
-                    <Input
+                    <TextField
                     val={ this.state.text }
                     onChange={text => this.setState({ text: text })}  
                     /> 
