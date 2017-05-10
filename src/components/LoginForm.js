@@ -9,37 +9,48 @@ import {Card, Button, CardSection, TextField, Spinner } from './common';
 
 class LoginForm extends Component {
     
-    state = { email: '', password: '', error: '', loading: false };
+    state = { 
+        email: '', 
+        password: '', 
+        error: '', 
+        loading: false };
 
-    onButtonPress() {
-        const { email, password } = this.state;
-        
-        this.setState({ error: ' ', loading: true });
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(this.onLoginSuccess.bind(this))
+onButtonPress() {
+    const {email, password} = this.state;
+    this.setState({error: '', loading: true});
+
+    firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(this.onLoginSuccess.bind(this)) //Succesful login | Form resets to blank
         .catch(() => {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(this.onLoginSuccess.bind(this))
-            .catch(this.onLoginFail.bind(this)); 
-            });
-    }
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password) // Atempt to create a new user if login fails
+                .then(this.onLoginSuccess.bind(this)) // Succesful creation of new user message
+                .catch(this.onLoginFail.bind(this)); // Failed creation of user
+        });
+}
 
+    // Failed Login function(message)
     onLoginFail() {
         this.setState({
             error: 'Authentication Failed',
             loading: false
-        })
+        });
     }
-
+    
+    // Successful Login function(message)
     onLoginSuccess() {
         this.setState({
             email: '',
             password: '',
             loading: false,
             error: ''
-        })
+        });
     }
 
+    // Function to call on th Spinner Loading immediately invoke after submission of user/pass
     renderButton() {
         if (this.state.loading) {
             return <Spinner size='small' />
@@ -51,6 +62,8 @@ class LoginForm extends Component {
             </Button>
         )
     }
+
+    // Main Render Function, contails the form text input and placeholder
 
     render() {
         return (
