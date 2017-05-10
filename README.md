@@ -11,4 +11,6 @@ Watchman
 Node/NPM
 xcode (Apple users)
 
-#
+# License
+MIT
+
