@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 
 //Import Styles
 
-import {Card, Button, CardSection, TextField } from './common';
+import {Card, Button, CardSection, TextField, Spinner } from './common';
 
 class LoginForm extends Component {
     
@@ -34,7 +34,6 @@ class LoginForm extends Component {
             <Button onPress={this.onButtonPress.bind(this)}>
                 Login
             </Button>
-
         )
     }
 
