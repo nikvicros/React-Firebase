@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 
 
 //Import Styles
@@ -7,6 +8,11 @@ import {Card, Button, CardSection, TextField } from './common';
 class LoginForm extends Component {
     
     state = { email: '', password: '' };
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        firebase.auth().signInWithEmailAndPassword(email, password)
+    }
 
     render() {
         return (
@@ -30,7 +36,7 @@ class LoginForm extends Component {
                     />
                 </CardSection>
                 <CardSection>
-                    <Button>
+                    <Button onPress={this.onButtonPress.bind(this)}>
                         Login
                     </Button>
                 </CardSection>
@@ -38,6 +44,5 @@ class LoginForm extends Component {
         )
     }
 }
-
 
 export default LoginForm;
