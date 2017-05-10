@@ -1,14 +1,19 @@
-import React, {Component}from 'react';
+// Core Imports
+import React, {Component} from 'react';
 import { View, Text } from 'react-native';
+
+
+
+//Custom Imports
 import firebase from 'firebase';
-import LoginForm from './compoents/LoginForm'
-
-//Custom Styles
 import { Header } from './components/common';
+import LoginForm from './components/LoginForm';
 
-//Firebase Initiation
+
 
 class App extends Component {
+    
+    //Firebase Initiation
     componentWillMount() {
         firebase.initializeApp({
             apiKey: "AIzaSyBPRxHCJehsKf9_AzZseVkkylIwAZSvkvA",
@@ -19,7 +24,6 @@ class App extends Component {
             messagingSenderId: "837649889212"
         });
     }
-
 
     render() {
         return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Controls = ({ onPress, children }) => {
+const Button = ({ onPress, children }) => {
     const { buttonStyle, buttonTextStyle } = PrimaryButtonStyle;
 
     return (
@@ -35,4 +35,4 @@ const PrimaryButtonStyle = {
     }
 };
 
-export { PrimaryButtonStyle };
+export { Button };
