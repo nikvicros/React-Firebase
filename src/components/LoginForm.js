@@ -8,49 +8,44 @@ import { Text } from 'react-native';
 import {Card, Button, CardSection, TextField, Spinner } from './common';
 
 class LoginForm extends Component {
-    
-    state = { 
-        email: '', 
-        password: '', 
-        error: '', 
-        loading: false };
 
-onButtonPress() {
-    const {email, password} = this.state;
-    this.setState({error: '', loading: true});
+    state = {
+        email: '',
+        password: '',
+        error: '',
+        loading: false
+    };
 
-    firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(this.onLoginSuccess.bind(this)) //Succesful login | Form resets to blank
-        .catch(() => {
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password) // Atempt to create a new user if login fails
-                .then(this.onLoginSuccess.bind(this)) // Succesful creation of new user message
-                .catch(this.onLoginFail.bind(this)); // Failed creation of user
-        });
-}
+    onButtonPress() {
+        const {email, password} = this.state;
+
+        this.setState({error: '', loading: true});
+
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(this.onLoginSuccess.bind(this)) //Succesful login | Form resets to blank
+            .catch(() => {
+                firebase
+                    .auth()
+                    .createUserWithEmailAndPassword(email, password) // Atempt to create a new user if login fails
+                    .then(this.onLoginSuccess.bind(this)) // Succesful creation of new user message
+                    .catch(this.onLoginFail.bind(this)); // Failed creation of user
+            });
+    }
 
     // Failed Login function(message)
     onLoginFail() {
-        this.setState({
-            error: 'Authentication Failed',
-            loading: false
-        });
-    }
-    
-    // Successful Login function(message)
-    onLoginSuccess() {
-        this.setState({
-            email: '',
-            password: '',
-            loading: false,
-            error: ''
-        });
+        this.setState({error: 'Authentication Failed', loading: false});
     }
 
-    // Function to call on th Spinner Loading immediately invoke after submission of user/pass
+    // Successful Login function(message)
+    onLoginSuccess() {
+        this.setState({email: '', password: '', loading: false, error: ''});
+    }
+
+    // Function to call on th Spinner Loading immediately invoke after submission of
+    // user/pass
     renderButton() {
         if (this.state.loading) {
             return <Spinner size='small' />
@@ -64,35 +59,34 @@ onButtonPress() {
     }
 
     // Main Render Function, contails the form text input and placeholder
+    // this.renderButton is invoked as soon as user presses submit
 
     render() {
         return (
             <Card>
                 <CardSection>
                     <TextField
-                    label='Email:'
-                    placeholder='your@email.com'
-                    val={ this.state.email }
-                    onChangeText={ email => this.setState({ email })}  
-                    /> 
+                        label='Email:'
+                        placeholder='your@email.com'
+                        val={this.state.email}
+                        onChangeText={email => this.setState({email})}/>
                 </CardSection>
 
                 <CardSection>
-                    <TextField 
-                    secureTextEntry
-                    label='Password:'
-                    placeholder='Password'
-                    val={ this.state.password }
-                    onChangeText={ password => this.setState({ password })}                    
-                    />
+                    <TextField
+                        secureTextEntry
+                        label='Password:'
+                        placeholder='Password'
+                        val={this.state.password}
+                        onChangeText={password => this.setState({password})}/>
                 </CardSection>
 
-                <Text style={ styles.errorTextStyle }>
-                { this.state.error }
+                <Text style={styles.errorTextStyle}>
+                    {this.state.error}
                 </Text>
 
                 <CardSection>
-                    {this.renderButton()}   
+                    {this.renderButton()}
                 </CardSection>
             </Card>
         );
