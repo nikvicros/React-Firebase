@@ -52,7 +52,7 @@ renderContent() {
         default:
             return <CardSection> 
                     <Spinner size='large'/>
-                   </CardSection
+                   </CardSection>
     }
 }
 
