@@ -46,7 +46,6 @@ class LoginForm extends Component {
     }
 
     // Function to call on th Spinner Loading immediately invoke after submission of
-    // user/pass
     renderButton() {
         if (this.state.loading) {
             return <Spinner size='small' />

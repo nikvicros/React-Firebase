@@ -6,14 +6,14 @@ import { View, Text } from 'react-native';
 
 //Custom Imports
 import firebase from 'firebase';
-import { Header } from './components/common';
+import { Header, Button, Card, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 
 
 
 class App extends Component {
 
-    state = { loggedIn: false }
+    state = { loggedIn: null }
     
     componentWillMount() {
         firebase.initializeApp({
@@ -31,15 +31,36 @@ class App extends Component {
             } else {
                 this.setState({ loggedIn: false })
             }
-
         })
     }
+
+renderContent() {
+
+    switch (this.state.loggedIn) {
+        case true:
+            return <Card>
+                <CardSection>
+                    <Button>
+                        Logout
+                    </Button>
+                </CardSection>
+            </Card>
+
+        case false:
+            return <LoginForm/>
+
+        default:
+            return <CardSection> 
+                    <Spinner size='large'/>
+                   </CardSection
+    }
+}
 
     render() {
         return (
             <View>
                 <Header headerText="Please Login"/>
-                <LoginForm />
+                {this.renderContent()}
             </View>
         );
     }
