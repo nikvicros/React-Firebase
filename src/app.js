@@ -38,8 +38,8 @@ renderContent() {
         case true:
             return <Card>
                 <CardSection>
-                    <Button>
-                        Logout
+                    <Button onPress={() => firebase.auth().signOut()} >
+                        Log Out
                     </Button>
                 </CardSection>
             </Card>
