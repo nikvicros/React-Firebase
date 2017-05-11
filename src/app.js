@@ -9,8 +9,6 @@ import firebase from 'firebase';
 import { Header, Button, Card, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 
-
-
 class App extends Component {
 
     state = { loggedIn: null }
@@ -51,7 +49,7 @@ renderContent() {
 
         default:
             return <CardSection> 
-                    <Spinner size='large'/>
+                        <Spinner size='large'/>
                    </CardSection>
     }
 }
