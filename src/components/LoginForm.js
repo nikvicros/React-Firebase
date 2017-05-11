@@ -20,7 +20,8 @@ class LoginForm extends Component {
         const {email, password} = this.state;
 
         this.setState({error: '', loading: true});
-
+        
+        //Firebase Authentication function with error logic
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
